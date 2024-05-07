@@ -16,7 +16,7 @@ export default function ProjectBoard() {
       <h2 className="text-2xl font-bold mb-4">Welcome to Dashboard</h2>
 
       {/* Input Fields */}
-      <div className="flex flex-wrap mb-4">
+      {/* <div className="flex flex-wrap mb-4">
         <div className="w-full md:w-1/3 px-2 mb-4 md:mb-0">
           <label htmlFor="name" className="block text-gray-700">
             Field Id
@@ -49,7 +49,7 @@ export default function ProjectBoard() {
             className="w-full border rounded-md px-3 py-2"
           />
         </div>
-      </div>
+      </div> */}
 
       {/* Item List */}
       <div className="flex flex-wrap -mx-4">

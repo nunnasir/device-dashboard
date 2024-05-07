@@ -73,7 +73,7 @@ const useDeviceData = () => {
       state: true,
       message: "Finding location..",
     });
-    const intervalId = setInterval(fetchDeviceData, 3000);
+    const intervalId = setInterval(fetchDeviceData, 30000);
     return () => clearInterval(intervalId);
   }, []);
 
