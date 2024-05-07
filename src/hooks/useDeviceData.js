@@ -31,7 +31,7 @@ const useDeviceData = () => {
 
       // Make the fetch call
       const response = await fetch(
-        `https://localhost:7223/api/DeviceData/lastData`
+        `https://smartsolarirrigationsystem.azurewebsites.net/api/DeviceData/lastData`
       );
 
       if (!response.ok) {
