@@ -9,9 +9,7 @@ import { DeviceDataContext } from "./context";
 
 export default function ProjectBoard() {
   const { deviceData } = useContext(DeviceDataContext);
-  // const { deviceData, loading } = useContext(DeviceDataContext);
-
-  console.table(deviceData);
+  const { ph, mos, nit, phos, pot, wfr } = deviceData;
 
   return (
     <main className="container mx-auto py-8 px-4">
@@ -67,7 +65,7 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value <br />
+                  St.Value: {ph} <br />
                   Sen.Value
                 </p>
               </div>
@@ -91,7 +89,7 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value <br />
+                  St.Value: {nit} <br />
                   Sen.Value
                 </p>
               </div>
@@ -115,7 +113,7 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value <br />
+                  St.Value: {phos} <br />
                   Sen.Value
                 </p>
               </div>
@@ -139,7 +137,7 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value <br />
+                  St.Value: {pot} <br />
                   Sen.Value
                 </p>
               </div>
@@ -163,7 +161,7 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value <br />
+                  St.Value: {wfr} <br />
                   Sen.Value
                 </p>
               </div>
@@ -187,7 +185,7 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value <br />
+                  St.Value: {mos} <br />
                   Sen.Value
                 </p>
               </div>
