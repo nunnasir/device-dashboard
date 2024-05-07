@@ -22,10 +22,10 @@ export default function Login({ onAuthenticUser }) {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-center">
-      <div className="bg-white shadow-md rounded px-8 py-8 w-1/5">
+    <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
+      <div className="bg-white shadow-md rounded px-8 py-8 w-full sm:w-2/3 md:w-1/2 lg:w-1/3">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
-        <form>
+        <form className="flex flex-col space-y-4">
           <div className="mb-4">
             <label
               htmlFor="username"

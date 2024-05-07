@@ -1,11 +1,18 @@
+import { useContext } from "react";
 import fertilizer from "./assets/fertilizer.png";
 import phMeter from "./assets/ph-meter.png";
 import Phosphorus from "./assets/phosphorus.png";
 import potassium from "./assets/potassium.png";
 import soilAnalysis from "./assets/soil-analysis.png";
 import waterLevel from "./assets/water-level.png";
+import { DeviceDataContext } from "./context";
 
 export default function ProjectBoard() {
+  const { deviceData } = useContext(DeviceDataContext);
+  // const { deviceData, loading } = useContext(DeviceDataContext);
+
+  console.table(deviceData);
+
   return (
     <main className="container mx-auto py-8 px-4">
       <h2 className="text-2xl font-bold mb-4">Welcome to Dashboard</h2>
