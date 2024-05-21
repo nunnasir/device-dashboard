@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { FieldIdContext } from "../context";
 
 const useDeviceData = () => {
   const [deviceData, setDeviceData] = useState({
@@ -20,6 +21,18 @@ const useDeviceData = () => {
     state: false,
     message: "",
   });
+
+  const [deviceStandardData, setDeviceStandardData] = useState({
+    ph: "",
+    mos: "",
+    nit: "",
+    phos: "",
+    pot: "",
+    water: "",
+    wfr: "",
+  });
+
+  const { selectedField } = useContext(FieldIdContext);
 
   const [error, setError] = useState(null);
 
@@ -111,8 +124,41 @@ const useDeviceData = () => {
     fetchFieldInformationtaAsync();
   }, []);
 
+  useEffect(() => {
+    const fetchDeviceStandardData = async (fieldId) => {
+      try {
+        const response = await fetch(
+          `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/${fieldId}`
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
+        const data = await response.json();
+        setDeviceStandardData(data);
+      } catch (err) {
+        console.error(err);
+        setDeviceStandardData({
+          ph: "",
+          mos: "",
+          nit: "",
+          phos: "",
+          pot: "",
+          water: "",
+          wfr: "",
+        });
+      }
+    };
+
+    if (selectedField) {
+      fetchDeviceStandardData(selectedField);
+    }
+  }, [selectedField]);
+
   return {
     deviceData,
+    deviceStandardData,
     fieldInfo,
     error,
     loading,
