@@ -82,7 +82,7 @@ const useDeviceData = () => {
   };
 
   const fetchStandardData = async (fieldId) => {
-    if (!fieldId) return;
+    // if (!fieldId) return;
 
     try {
       const response = await fetch(
