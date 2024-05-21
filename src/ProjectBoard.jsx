@@ -66,7 +66,7 @@ export default function ProjectBoard() {
           </label>
           <select
             id="dropdown"
-            value={selectedField}
+            value={selectedField || ""}
             onChange={handleChange}
             className="w-full border rounded-md px-3 py-2"
           >
