@@ -18,7 +18,7 @@ const useStandardData = () => {
     const fetchDeviceStandardData = async (fieldId) => {
       try {
         const response = await fetch(
-          `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/${fieldId}`
+          `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/23c325df-23d4-4f55-801c-cd4a1b4ffbc1`
         );
 
         if (!response.ok) {
