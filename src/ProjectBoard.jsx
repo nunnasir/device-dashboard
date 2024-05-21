@@ -54,7 +54,7 @@ export default function ProjectBoard() {
   };
 
   const getPhMessage = (senValue, stValue) => {
-    console.log(senValue, stValue);
+    console.log(senValue, Number(stValue));
 
     if (senValue && stValue) {
       if (senValue == Number(stValue)) {
