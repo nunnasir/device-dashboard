@@ -59,15 +59,13 @@ export default function ProjectBoard() {
     console.log("Parameter", senValue, Number(stValue));
 
     if (senValue > 0 && Number(stValue) > 0) {
-      if (senValue == Number(stValue)) {
+      if (senValue === Number(stValue)) {
         setPhNotificationMessage("PH within the standard range");
-      }
-      if (senValue > Number(stValue)) {
+      } else if (senValue > Number(stValue)) {
         setPhNotificationMessage(
           "PH is above the standard range, Please consult with local agriculture office"
         );
-      }
-      if (senValue > Number(stValue)) {
+      } else if (senValue < Number(stValue)) {
         setPhNotificationMessage(
           "PH is below the standard range. Please consult with local agriculture office."
         );
