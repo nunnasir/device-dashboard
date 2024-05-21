@@ -53,29 +53,25 @@ export default function ProjectBoard() {
     }
   };
 
+  const [phNotificationMessage, setPhNotificationMessage] = useState("");
+
   const getPhMessage = (senValue, stValue) => {
     if (senValue && stValue) {
       if (senValue == Number(stValue)) {
-        return <li>PH within the standard range</li>;
+        setPhNotificationMessage("PH within the standard range");
       }
       if (senValue > Number(stValue)) {
-        return (
-          <li>
-            PH is above the standard range, Please consult with local
-            agriculture office
-          </li>
+        setPhNotificationMessage(
+          "PH is above the standard range, Please consult with local agriculture office"
         );
       }
       if (senValue > Number(stValue)) {
-        return (
-          <li>
-            PH is below the standard range. Please consult with local
-            agriculture office.
-          </li>
+        setPhNotificationMessage(
+          "PH is below the standard range. Please consult with local agriculture office."
         );
       }
     } else {
-      return <li>There is no any standard value</li>;
+      setPhNotificationMessage("There is no any standard value");
     }
   };
 
@@ -144,6 +140,7 @@ export default function ProjectBoard() {
                 <div className="absolute right-0 w-64 bg-white text-gray-700 p-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <ul className="list-disc list-inside">
                     {getPhMessage(ph, deviceStandardValue.ph)}
+                    {phNotificationMessage}
                   </ul>
                 </div>
               </div>
