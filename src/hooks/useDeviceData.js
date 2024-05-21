@@ -102,6 +102,8 @@ const useDeviceData = () => {
     }
   };
 
+  console.log("Seleted FieldId Hook:", selectedField);
+
   const fetchStandardData = async (fieldId) => {
     try {
       // Make the fetch call
