@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import fertilizer from "./assets/fertilizer.png";
 import phMeter from "./assets/ph-meter.png";
@@ -75,6 +75,10 @@ export default function ProjectBoard() {
     }
   };
 
+  useEffect(() => {
+    getPhMessage(ph, deviceStandardValue.ph);
+  }, [ph, deviceStandardValue.ph]);
+
   return (
     <main className="container mx-auto py-8 px-4">
       <h2 className="text-2xl font-bold mb-4">Welcome to Dashboard</h2>
@@ -139,7 +143,6 @@ export default function ProjectBoard() {
                 <FaInfoCircle className="text-white cursor-pointer" />
                 <div className="absolute right-0 w-64 bg-white text-gray-700 p-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <ul className="list-disc list-inside">
-                    {getPhMessage(ph, deviceStandardValue.ph)}
                     {phNotificationMessage}
                   </ul>
                 </div>
