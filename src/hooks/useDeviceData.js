@@ -25,18 +25,7 @@ const useDeviceData = () => {
     wfr: 3419,
   });
 
-  const [fieldId, setFieldId] = useState([
-    {
-      id: "",
-      fieldId: "",
-    },
-  ]);
-  const [cropName, setCropName] = useState([
-    {
-      id: "",
-      name: "",
-    },
-  ]);
+  const [fieldInfo, setFieldInfo] = useState([]);
 
   const [loading, setLoading] = useState({
     state: false,
@@ -138,19 +127,7 @@ const useDeviceData = () => {
 
       const data = await response.json();
 
-      console.log(data);
-      const updatFieldInfo = {
-        id: data.id,
-        fieldId: data.fieldId,
-      };
-
-      const updatCropInfo = {
-        id: data.id,
-        name: data.name,
-      };
-
-      setFieldId(updatFieldInfo);
-      setCropName(updatCropInfo);
+      setFieldInfo(data);
     } catch (err) {
       setError(err);
     }
@@ -192,8 +169,7 @@ const useDeviceData = () => {
 
   return {
     deviceData,
-    fieldId,
-    cropName,
+    fieldInfo,
     deviceStandardData,
     error,
     loading,
