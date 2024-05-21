@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { FieldIdContext } from "../context";
 
 const useDeviceData = () => {
   const [deviceData, setDeviceData] = useState({
@@ -14,12 +15,24 @@ const useDeviceData = () => {
     sensor: 1,
   });
 
+  const [deviceStandardData, setDeviceStandardData] = useState({
+    ph: 7.65,
+    mos: 0,
+    nit: 4,
+    phos: 0,
+    pot: 0,
+    water: 1,
+    wfr: 3419,
+  });
+
   const [loading, setLoading] = useState({
     state: false,
     message: "",
   });
 
   const [error, setError] = useState(null);
+
+  const { selectedField } = useContext(FieldIdContext);
 
   const fetchDeviceData = async () => {
     try {
@@ -67,6 +80,37 @@ const useDeviceData = () => {
     }
   };
 
+  const fetchDeviceStandardData = async (fieldId) => {
+    try {
+      // Make the fetch call
+      const response = await fetch(
+        `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/23c325df-23d4-4f55-801c-cd4a1b4ffbc1`
+      );
+
+      if (!response.ok) {
+        const errorMessage = `Fetchibg standard data failed: ${response.status}`;
+        throw new Error(errorMessage);
+      }
+
+      const data = await response.json();
+
+      // console.log(data);
+      const updateDeviceStandardData = {
+        ph: data.ph,
+        mos: data.mos,
+        nit: data.nit,
+        phos: data.phos,
+        pot: data.pot,
+        water: data.water,
+        wfr: data.wfr,
+      };
+
+      setDeviceStandardData(updateDeviceStandardData);
+    } catch (err) {
+      setError(err);
+    }
+  };
+
   useEffect(() => {
     setLoading({
       ...loading,
@@ -77,8 +121,21 @@ const useDeviceData = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+  useEffect(() => {
+    const fetchDeviceStandardDataAsync = async () => {
+      try {
+        await fetchDeviceStandardData(selectedField);
+      } catch (error) {
+        setError(error);
+      }
+    };
+
+    fetchDeviceStandardDataAsync();
+  }, [selectedField]);
+
   return {
     deviceData,
+    deviceStandardData,
     error,
     loading,
   };

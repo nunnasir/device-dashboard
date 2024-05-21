@@ -1,5 +1,7 @@
 import { createContext } from "react";
 
 const DeviceDataContext = createContext("");
+const DeviceStandardDataContext = createContext("");
+const FieldIdContext = createContext("");
 
-export { DeviceDataContext };
+export { DeviceDataContext, DeviceStandardDataContext, FieldIdContext };

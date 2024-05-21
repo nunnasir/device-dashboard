@@ -8,7 +8,7 @@ import waterLevel from "./assets/water-level.png";
 import { DeviceDataContext } from "./context";
 
 export default function ProjectBoard() {
-  const { deviceData } = useContext(DeviceDataContext);
+  const { deviceData, deviceStandardData } = useContext(DeviceDataContext);
   const { ph, mos, nit, phos, pot, wfr } = deviceData;
 
   return (
@@ -65,8 +65,8 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value: {ph} <br />
-                  Sen.Value
+                  St.Value: {deviceStandardData.ph} <br />
+                  Sen.Value: {ph}
                 </p>
               </div>
               {/* Right Section (Image) */}
@@ -89,8 +89,8 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value: {nit} <br />
-                  Sen.Value
+                  St.Value: {deviceStandardData.nit} <br />
+                  Sen.Value: {nit}
                 </p>
               </div>
               {/* Right Section (Image) */}
@@ -113,8 +113,8 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value: {phos} <br />
-                  Sen.Value
+                  St.Value: {deviceStandardData.phos} <br />
+                  Sen.Value: {phos}
                 </p>
               </div>
               {/* Right Section (Image) */}
@@ -137,8 +137,8 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value: {pot} <br />
-                  Sen.Value
+                  St.Value: {deviceStandardData.pot} <br />
+                  Sen.Value: {pot}
                 </p>
               </div>
               {/* Right Section (Image) */}
@@ -161,8 +161,8 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value: {wfr} <br />
-                  Sen.Value
+                  St.Value: {deviceStandardData.wfr} <br />
+                  Sen.Value: {wfr}
                 </p>
               </div>
               {/* Right Section (Image) */}
@@ -185,8 +185,8 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value: {mos} <br />
-                  Sen.Value
+                  St.Value: {deviceStandardData.mos} <br />
+                  Sen.Value: {mos}
                 </p>
               </div>
               {/* Right Section (Image) */}
