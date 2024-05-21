@@ -30,7 +30,7 @@ export default function ProjectBoard() {
 
       {/* Input Fields */}
       <div className="flex flex-wrap mb-4">
-        <div className="w-full md:w-1/3 px-2 mb-4 md:mb-0">
+        {/* <div className="w-full md:w-1/3 px-2 mb-4 md:mb-0">
           <label htmlFor="fieldId" className="block text-gray-700">
             Field Id
           </label>
@@ -46,7 +46,7 @@ export default function ProjectBoard() {
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
         <div className="w-full md:w-1/3 px-2 mb-4 md:mb-0">
           <label htmlFor="dropdown" className="block text-gray-700">
             Crop Name
