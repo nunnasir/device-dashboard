@@ -29,7 +29,7 @@ export default function ProjectBoard() {
 
   const handleChange = (event) => {
     const selectedValue = event.target.value;
-    setSelectedField(selectedValue);
+    // setSelectedField(selectedValue);
 
     if (selectedValue == "Rice" || selectedValue == "001") {
       const updatedData = {
