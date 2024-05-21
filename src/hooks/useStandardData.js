@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { FieldIdContext } from "../context";
+import { FieldIdContext } from "../context/FieldProvider";
 
 const useStandardData = () => {
   const [deviceStandardData, setDeviceStandardData] = useState({
@@ -14,44 +14,41 @@ const useStandardData = () => {
 
   const { selectedField } = useContext(FieldIdContext);
 
-  useEffect(() => {
-    const fetchDeviceStandardData = async (fieldId) => {
-      console.log("Field Id:", fieldId);
+  const fetchDeviceStandardData = async (fieldId) => {
+    try {
+      const response = await fetch(
+        `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/${fieldId}`
+      );
 
-      try {
-        const response = await fetch(
-          `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/${fieldId}`
-        );
-
-        if (!response.ok) {
-          setDeviceStandardData({
-            ph: "",
-            mos: "",
-            nit: "",
-            phos: "",
-            pot: "",
-            water: "",
-            wfr: "",
-          });
-          return;
-        }
-
-        const data = await response.json();
-
+      if (!response.ok) {
         setDeviceStandardData({
-          ph: data.ph,
-          mos: data.mos,
-          nit: data.nit,
-          phos: data.phos,
-          pot: data.pot,
-          water: data.water,
-          wfr: data.wfr,
+          ph: "",
+          mos: "",
+          nit: "",
+          phos: "",
+          pot: "",
+          water: "",
+          wfr: "",
         });
-      } catch (err) {
-        console.error(err.message);
+        return;
       }
-    };
 
+      const data = await response.json();
+      setDeviceStandardData({
+        ph: data.ph,
+        mos: data.mos,
+        nit: data.nit,
+        phos: data.phos,
+        pot: data.pot,
+        water: data.water,
+        wfr: data.wfr,
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
     if (selectedField) {
       fetchDeviceStandardData(selectedField);
     }
