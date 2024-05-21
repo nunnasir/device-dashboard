@@ -31,36 +31,7 @@ export default function ProjectBoard() {
     const selectedValue = event.target.value;
     setSelectedField(selectedValue);
 
-    if (selectedValue == "Rice") {
-      const updatedData = {
-        ph: "7",
-        mos: "1",
-        nit: "4",
-        phos: "3",
-        pot: "11",
-        water: "333",
-        wfr: "11",
-      };
-      setDeviceStandardValue(updatedData);
-    } else {
-      const updatedData = {
-        ph: "",
-        mos: "",
-        nit: "",
-        phos: "",
-        pot: "",
-        water: "",
-        wfr: "",
-      };
-      setDeviceStandardValue(updatedData);
-    }
-  };
-
-  const handleFieldChange = (event) => {
-    const selectedValue = event.target.value;
-    setSelectedField(selectedValue);
-
-    if (selectedValue == "001") {
+    if (selectedValue == "Rice" || selectedValue == "001") {
       const updatedData = {
         ph: "7",
         mos: "1",
@@ -98,7 +69,7 @@ export default function ProjectBoard() {
           <select
             id="fieldId"
             value={selectedField}
-            onChange={handleFieldChange}
+            onChange={handleChange}
             className="w-full border rounded-md px-3 py-2"
           >
             {fieldInfo.map((field) => (
