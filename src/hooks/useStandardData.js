@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 import { useContext, useEffect, useState } from "react";
 import { FieldIdContext } from "../context";
 
@@ -16,50 +14,42 @@ const useStandardData = () => {
 
   const { selectedField } = useContext(FieldIdContext);
 
-  console.log("Field Id", selectedField);
-
-  const fetchDeviceStandardData = async (fieldId) => {
-    try {
-      // Make the fetch call
-      const response = await fetch(
-        `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/${fieldId}`
-      );
-
-      if (!response.ok) {
-        const updatedData = {
-          ph: "",
-          mos: "",
-          nit: "",
-          phos: "",
-          pot: "",
-          water: "",
-          wfr: "",
-        };
-        setDeviceStandardData(updatedData);
-
-        return;
-      }
-
-      const data = await response.json();
-
-      // console.log(data);
-      const updateDeviceStandardData = {
-        ph: data.ph,
-        mos: data.mos,
-        nit: data.nit,
-        phos: data.phos,
-        pot: data.pot,
-        water: data.water,
-        wfr: data.wfr,
-      };
-
-      setDeviceStandardData(updateDeviceStandardData);
-    } catch (err) {
-      throw err.message;
-    }
-  };
-
   useEffect(() => {
+    const fetchDeviceStandardData = async (fieldId) => {
+      try {
+        const response = await fetch(
+          `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/${fieldId}`
+        );
+
+        if (!response.ok) {
+          setDeviceStandardData({
+            ph: "",
+            mos: "",
+            nit: "",
+            phos: "",
+            pot: "",
+            water: "",
+            wfr: "",
+          });
+          return;
+        }
+
+        const data = await response.json();
+
+        setDeviceStandardData({
+          ph: data.ph,
+          mos: data.mos,
+          nit: data.nit,
+          phos: data.phos,
+          pot: data.pot,
+          water: data.water,
+          wfr: data.wfr,
+        });
+      } catch (err) {
+        console.error(err.message);
+      }
+    };
+
     if (selectedField) {
       fetchDeviceStandardData(selectedField);
     }
