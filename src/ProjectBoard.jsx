@@ -54,20 +54,28 @@ export default function ProjectBoard() {
   };
 
   const getPhMessage = (senValue, stValue) => {
-    console.log(senValue, Number(stValue));
-
     if (senValue && stValue) {
       if (senValue == Number(stValue)) {
-        return "PH within the standard range";
+        return <li>PH within the standard range</li>;
       }
       if (senValue > Number(stValue)) {
-        return "PH is above the standard range, Please consult with local agriculture office";
+        return (
+          <li>
+            PH is above the standard range, Please consult with local
+            agriculture office
+          </li>
+        );
       }
       if (senValue > Number(stValue)) {
-        return "PH is below the standard range. Please consult with local agriculture office.";
+        return (
+          <li>
+            PH is below the standard range. Please consult with local
+            agriculture office.
+          </li>
+        );
       }
     } else {
-      return "There is no any standard value";
+      return <li>There is no any standard value</li>;
     }
   };
 
@@ -135,7 +143,7 @@ export default function ProjectBoard() {
                 <FaInfoCircle className="text-white cursor-pointer" />
                 <div className="absolute right-0 w-64 bg-white text-gray-700 p-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <ul className="list-disc list-inside">
-                    <li>{getPhMessage(ph, deviceStandardValue.ph)}</li>
+                    {getPhMessage(ph, deviceStandardValue.ph)}
                   </ul>
                 </div>
               </div>
