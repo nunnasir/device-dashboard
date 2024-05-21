@@ -5,7 +5,7 @@ import { DeviceDataContext } from "../context";
 import { useDeviceData } from "../hooks";
 
 const DeviceDataProvider = ({ children }) => {
-  const { deviceData, deviceStandardData, fieldId, cropName, error, loading } =
+  const { deviceData, deviceStandardData, fieldInfo, error, loading } =
     useDeviceData();
 
   return (
@@ -13,8 +13,7 @@ const DeviceDataProvider = ({ children }) => {
       value={{
         deviceData,
         deviceStandardData,
-        fieldId,
-        cropName,
+        fieldInfo,
         error,
         loading,
       }}
