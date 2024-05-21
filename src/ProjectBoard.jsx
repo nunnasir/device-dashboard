@@ -19,10 +19,14 @@ export default function ProjectBoard() {
 
   const handleChange = (event) => {
     const selectedValue = event.target.value;
-    console.log(selectedValue);
+    console.log("Selected value:", selectedValue);
 
     setSelectedField(selectedValue);
+    console.log("Updated selected field:", selectedField); // Check if selectedField updates
   };
+
+  console.log("Current selected field:", selectedField); // Check the current value of selectedField
+  console.log("Device standard data:", deviceStandardData);
 
   return (
     <main className="container mx-auto py-8 px-4">
