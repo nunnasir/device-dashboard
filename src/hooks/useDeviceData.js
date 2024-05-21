@@ -128,7 +128,7 @@ const useDeviceData = () => {
 
       const data = await response.json();
 
-      // console.log(data);
+      console.log(data);
       const updatFieldInfo = {
         id: data.id,
         fieldId: data.fieldId,
