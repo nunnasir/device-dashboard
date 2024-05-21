@@ -56,20 +56,49 @@ export default function ProjectBoard() {
     }
   };
 
+  const handleFieldChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedField(selectedValue);
+
+    if (selectedValue == "001") {
+      const updatedData = {
+        ph: "7",
+        mos: "1",
+        nit: "4",
+        phos: "3",
+        pot: "11",
+        water: "333",
+        wfr: "11",
+      };
+      setDeviceStandardValue(updatedData);
+    } else {
+      const updatedData = {
+        ph: "",
+        mos: "",
+        nit: "",
+        phos: "",
+        pot: "",
+        water: "",
+        wfr: "",
+      };
+      setDeviceStandardValue(updatedData);
+    }
+  };
+
   return (
     <main className="container mx-auto py-8 px-4">
       <h2 className="text-2xl font-bold mb-4">Welcome to Dashboard</h2>
 
       {/* Input Fields */}
       <div className="flex flex-wrap mb-4">
-        {/* <div className="w-full md:w-1/3 px-2 mb-4 md:mb-0">
+        <div className="w-full md:w-1/3 px-2 mb-4 md:mb-0">
           <label htmlFor="fieldId" className="block text-gray-700">
             Field Id
           </label>
           <select
             id="fieldId"
             value={selectedField}
-            onChange={handleChange}
+            onChange={handleFieldChange}
             className="w-full border rounded-md px-3 py-2"
           >
             {fieldInfo.map((field) => (
@@ -78,7 +107,7 @@ export default function ProjectBoard() {
               </option>
             ))}
           </select>
-        </div> */}
+        </div>
         <div className="w-full md:w-1/3 px-2 mb-4 md:mb-0">
           <label htmlFor="dropdown" className="block text-gray-700">
             Crop Name
