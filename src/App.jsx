@@ -23,8 +23,8 @@ export default function App() {
   };
 
   return (
-    <DeviceDataProvider>
-      <FieldProvider>
+    <FieldProvider>
+      <DeviceDataProvider>
         {authenticUser ? (
           <>
             <Header onLogOut={handleLogOut} />
@@ -36,7 +36,7 @@ export default function App() {
         )}
 
         <ToastContainer position="top-right" autoClose={3000} theme="light" />
-      </FieldProvider>
-    </DeviceDataProvider>
+      </DeviceDataProvider>
+    </FieldProvider>
   );
 }
