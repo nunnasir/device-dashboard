@@ -127,6 +127,8 @@ const useDeviceData = () => {
 
       const data = await response.json();
 
+      console.log(data);
+
       setFieldInfo(data);
     } catch (err) {
       setError(err);
