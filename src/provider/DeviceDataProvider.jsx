@@ -2,9 +2,10 @@
 import { useState } from "react";
 import { DeviceDataContext, FieldIdContext } from "../context";
 import { useDeviceData } from "../hooks";
+// DeviceDataProvider.js
 
 const DeviceDataProvider = ({ children }) => {
-  const [selectedField, setSelectedField] = useState("");
+  const [selectedField, setSelectedField] = useState(null);
   const { deviceStandardData, deviceData, fieldInfo, error, loading } =
     useDeviceData();
 

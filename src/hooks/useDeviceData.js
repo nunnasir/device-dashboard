@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+// useDeviceData.js
 import { useContext, useEffect, useState } from "react";
 import { FieldIdContext } from "../context";
 
@@ -16,12 +16,7 @@ const useDeviceData = () => {
   });
 
   const [fieldInfo, setFieldInfo] = useState([]);
-
-  const [loading, setLoading] = useState({
-    state: false,
-    message: "",
-  });
-
+  const [loading, setLoading] = useState({ state: false, message: "" });
   const [deviceStandardData, setDeviceStandardData] = useState({
     ph: "",
     mos: "",
@@ -32,11 +27,10 @@ const useDeviceData = () => {
     wfr: "",
   });
 
-  const { selectedField } = useContext(FieldIdContext);
+  const fieldIdContext = useContext(FieldIdContext);
+  const { selectedField } = fieldIdContext || {}; // Handle if context is null
 
   const [error, setError] = useState(null);
-
-  console.log("Seleted FieldId Hook:", selectedField);
 
   const fetchDeviceData = async () => {
     try {
@@ -46,58 +40,36 @@ const useDeviceData = () => {
         message: "Fetching weather data..",
       });
 
-      // Make the fetch call
       const response = await fetch(
         `https://smartsolarirrigationsystem.azurewebsites.net/api/DeviceData/lastData`
       );
 
       if (!response.ok) {
-        const errorMessage = `Fetchibg weather data failed: ${response.status}`;
-        throw new Error(errorMessage);
+        throw new Error(`Fetching weather data failed: ${response.status}`);
       }
 
       const data = await response.json();
-
-      // console.log(data);
-
-      const updateDeviceData = {
-        ph: data.ph,
-        mos: data.mos,
-        nit: data.nit,
-        phos: data.phos,
-        pot: data.pot,
-        water: data.water,
-        wfr: data.wfr,
-        node: data.node,
-        sensor: data.sensor,
-      };
-
-      setDeviceData(updateDeviceData);
+      setDeviceData(data);
     } catch (err) {
       setError(err);
     } finally {
-      setLoading({
-        ...loading,
-        state: false,
-        message: "",
-      });
+      setLoading({ ...loading, state: false, message: "" });
     }
   };
 
   const fetchFieldInformation = async () => {
     try {
-      // Make the fetch call
       const response = await fetch(
         `https://smartsolarirrigationsystem.azurewebsites.net/api/fieldInfo`
       );
 
       if (!response.ok) {
-        const errorMessage = `Fetchibg standard data failed: ${response.status}`;
-        throw new Error(errorMessage);
+        throw new Error(
+          `Fetching field information failed: ${response.status}`
+        );
       }
 
       const data = await response.json();
-
       setFieldInfo(data.items);
     } catch (err) {
       setError(err);
@@ -105,19 +77,18 @@ const useDeviceData = () => {
   };
 
   const fetchStandardData = async (fieldId) => {
+    if (!fieldId) return;
+
     try {
-      // Make the fetch call
       const response = await fetch(
         `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/${fieldId}`
       );
 
       if (!response.ok) {
-        const errorMessage = `Fetchibg standard data failed: ${response.status}`;
-        throw new Error(errorMessage);
+        throw new Error(`Fetching standard data failed: ${response.status}`);
       }
 
       const data = await response.json();
-
       setDeviceStandardData(data);
     } catch (err) {
       setError(err);
@@ -125,25 +96,19 @@ const useDeviceData = () => {
   };
 
   useEffect(() => {
-    setLoading({
-      ...loading,
-      state: true,
-      message: "Finding location..",
-    });
+    fetchDeviceData();
     const intervalId = setInterval(fetchDeviceData, 30000);
     return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
-    const fetchFieldInformationtaAsync = async () => {
-      fetchFieldInformation();
-    };
-
-    fetchFieldInformationtaAsync();
+    fetchFieldInformation();
   }, []);
 
   useEffect(() => {
-    fetchStandardData(selectedField);
+    if (selectedField) {
+      fetchStandardData(selectedField);
+    }
   }, [selectedField]);
 
   return {
