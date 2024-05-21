@@ -25,8 +25,18 @@ const useDeviceData = () => {
     wfr: 3419,
   });
 
-  const [fieldId, setFieldId] = useState([]);
-  const [cropName, setCropName] = useState([]);
+  const [fieldId, setFieldId] = useState([
+    {
+      id: "",
+      fieldId: "",
+    },
+  ]);
+  const [cropName, setCropName] = useState([
+    {
+      id: "",
+      name: "",
+    },
+  ]);
 
   const [loading, setLoading] = useState({
     state: false,
@@ -134,13 +144,13 @@ const useDeviceData = () => {
         fieldId: data.fieldId,
       };
 
-      // const updatCropInfo = {
-      //   id: data.id,
-      //   name: data.name,
-      // };
+      const updatCropInfo = {
+        id: data.id,
+        name: data.name,
+      };
 
       setFieldId(updatFieldInfo);
-      // setCropName(updatCropInfo);
+      setCropName(updatCropInfo);
     } catch (err) {
       setError(err);
     }
