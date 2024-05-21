@@ -29,6 +29,7 @@ const useDeviceData = () => {
   });
 
   const fieldIdContext = useContext(FieldIdContext);
+
   const { selectedField } = fieldIdContext || {}; // Handle if context is null
   const [error, setError] = useState(null);
 

@@ -1,5 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { FaInfoCircle } from "react-icons/fa";
+import Switch from "react-switch";
+import switchImage from "./assets/Switch.jpg";
+import waterImage from "./assets/WaterLevel.jpg";
 import fertilizer from "./assets/fertilizer.png";
 import phMeter from "./assets/ph-meter.png";
 import Phosphorus from "./assets/phosphorus.png";
@@ -10,16 +13,13 @@ import { DeviceDataContext, FieldIdContext } from "./context";
 
 export default function ProjectBoard() {
   const { selectedField, setSelectedField } = useContext(FieldIdContext);
-  const { deviceStandardData, fieldInfo, deviceData } =
-    useContext(DeviceDataContext);
+  const { fieldInfo, deviceData } = useContext(DeviceDataContext);
   const [deviceStandardValue, setDeviceStandardValue] = useState({
     ph: "",
     mos: "",
     nit: "",
     phos: "",
     pot: "",
-    water: "",
-    wfr: "",
   });
 
   const { ph, mos, nit, phos, pot, wfr } = deviceData;
@@ -30,13 +30,11 @@ export default function ProjectBoard() {
 
     if (selectedValue == "Rice") {
       const updatedData = {
-        ph: "7",
-        mos: "1",
-        nit: "4",
-        phos: "3",
-        pot: "11",
-        water: "333",
-        wfr: "11",
+        ph: "6.7",
+        mos: "70",
+        nit: "80",
+        phos: "20",
+        pot: "40",
       };
       setDeviceStandardValue(updatedData);
     } else {
@@ -51,6 +49,12 @@ export default function ProjectBoard() {
       };
       setDeviceStandardValue(updatedData);
     }
+  };
+
+  const [isMeterOn, setIsMeterOn] = useState(false);
+
+  const handleToggle = () => {
+    setIsMeterOn(!isMeterOn);
   };
 
   const [phNotificationMessage, setPhNotificationMessage] = useState("");
@@ -367,10 +371,7 @@ export default function ProjectBoard() {
             <div className="flex flex-col md:flex-row justify-center items-center">
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
-                <p className="text-gray-700">
-                  St.Value: {deviceStandardData.wfr} <br />
-                  Sen.Value: {wfr}
-                </p>
+                <p className="text-gray-700">Sen.Value: {wfr}</p>
               </div>
               {/* Right Section (Image) */}
               <div className="md:w-1/2 p-6">
@@ -411,6 +412,59 @@ export default function ProjectBoard() {
                   alt="PH Meter"
                   className="w-32 h-auto"
                 />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Item 7 */}
+        <div className="w-full md:w-1/2 px-4 mb-4">
+          <div className="bg-white rounded-lg shadow-md">
+            {/* Card Top (Title) */}
+            <div className="bg-blue-500 text-white py-3 px-6">
+              <h3 className="text-lg font-bold text-center">Water Quantity</h3>
+            </div>
+            {/* Card Body */}
+            <div className="flex flex-col md:flex-row justify-center items-center">
+              {/* Left Section (Text) */}
+              <div className="md:w-1/2 p-6">
+                <p className="text-gray-700">Sen.Value: {wfr}</p>
+              </div>
+              {/* Right Section (Image) */}
+              <div className="md:w-1/2 p-6">
+                <img src={waterImage} alt="Image" className="w-32 h-auto" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Item 8 */}
+        <div className="w-full md:w-1/2 px-4 mb-4">
+          <div className="bg-white rounded-lg shadow-md">
+            {/* Card Top (Title) */}
+            <div className="bg-blue-500 text-white py-3 px-6">
+              <h3 className="text-lg font-bold text-center">Action</h3>
+            </div>
+            {/* Card Body */}
+            <div className="flex flex-col md:flex-row justify-center items-center">
+              {/* Left Section (Text) */}
+              <div className="md:w-1/2 p-6">
+                <div className="flex items-center mt-4">
+                  <span className="mr-2 text-gray-700">Meter Off</span>
+                  <Switch
+                    onChange={handleToggle}
+                    checked={isMeterOn}
+                    onColor="#4CAF50"
+                    offColor="#F44336"
+                    uncheckedIcon={false}
+                    checkedIcon={false}
+                  />
+                  <span className="ml-2 text-gray-700">Meter On</span>
+                </div>
+              </div>
+              {/* Right Section (Image) */}
+              <div className="md:w-1/2 p-6">
+                <img src={switchImage} alt="Image" className="w-32 h-auto" />
               </div>
             </div>
           </div>
