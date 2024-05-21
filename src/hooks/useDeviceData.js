@@ -134,13 +134,13 @@ const useDeviceData = () => {
         fieldId: data.fieldId,
       };
 
-      const updatCropInfo = {
-        id: data.id,
-        name: data.name,
-      };
+      // const updatCropInfo = {
+      //   id: data.id,
+      //   name: data.name,
+      // };
 
       setFieldId(updatFieldInfo);
-      setCropName(updatCropInfo);
+      // setCropName(updatCropInfo);
     } catch (err) {
       setError(err);
     }
