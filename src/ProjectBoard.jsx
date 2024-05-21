@@ -278,7 +278,7 @@ export default function ProjectBoard() {
           <div className="bg-white rounded-lg shadow-md relative">
             {/* Card Top (Title) */}
             <div className="bg-blue-500 text-white py-3 px-6 flex justify-between items-center">
-              <h3 className="text-lg font-bold">Nitrogen (N)</h3>
+              <h3 className="text-lg font-bold">Nitrogen (N) - (mg/kg)</h3>
               <div className="relative group">
                 <FaInfoCircle className="text-white cursor-pointer" />
                 <div className="absolute right-0 w-64 bg-white text-gray-700 p-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
@@ -310,7 +310,7 @@ export default function ProjectBoard() {
           <div className="bg-white rounded-lg shadow-md relative">
             {/* Card Top (Title) */}
             <div className="bg-blue-500 text-white py-3 px-6 flex justify-between items-center">
-              <h3 className="text-lg font-bold">Phosphorus (P)</h3>
+              <h3 className="text-lg font-bold">Phosphorus (P) - (mg/kg)</h3>
               <div className="relative group">
                 <FaInfoCircle className="text-white cursor-pointer" />
                 <div className="absolute right-0 w-64 bg-white text-gray-700 p-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
@@ -342,7 +342,7 @@ export default function ProjectBoard() {
           <div className="bg-white rounded-lg shadow-md relative">
             {/* Card Top (Title) */}
             <div className="bg-blue-500 text-white py-3 px-6 flex justify-between items-center">
-              <h3 className="text-lg font-bold">Potassium (K)</h3>
+              <h3 className="text-lg font-bold">Potassium (K) - (mg/kg)</h3>
               <div className="relative group">
                 <FaInfoCircle className="text-white cursor-pointer" />
                 <div className="absolute right-0 w-64 bg-white text-gray-700 p-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
@@ -397,7 +397,7 @@ export default function ProjectBoard() {
           <div className="bg-white rounded-lg shadow-md relative">
             {/* Card Top (Title) */}
             <div className="bg-blue-500 text-white py-3 px-6 flex justify-between items-center">
-              <h3 className="text-lg font-bold">Soil Moisture</h3>
+              <h3 className="text-lg font-bold">Soil Moisture (%)</h3>
               <div className="relative group">
                 <FaInfoCircle className="text-white cursor-pointer" />
                 <div className="absolute right-0 w-64 bg-white text-gray-700 p-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
@@ -433,7 +433,9 @@ export default function ProjectBoard() {
           <div className="bg-white rounded-lg shadow-md">
             {/* Card Top (Title) */}
             <div className="bg-blue-500 text-white py-3 px-6">
-              <h3 className="text-lg font-bold text-center">Water Quantity</h3>
+              <h3 className="text-lg font-bold text-center">
+                Water Quantity (Liter)
+              </h3>
             </div>
             {/* Card Body */}
             <div className="flex flex-col md:flex-row justify-center items-center">
