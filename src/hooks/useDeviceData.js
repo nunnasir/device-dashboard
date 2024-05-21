@@ -36,6 +36,8 @@ const useDeviceData = () => {
 
   const [error, setError] = useState(null);
 
+  console.log("Seleted FieldId Hook:", selectedField);
+
   const fetchDeviceData = async () => {
     try {
       setLoading({
@@ -102,8 +104,6 @@ const useDeviceData = () => {
     }
   };
 
-  console.log("Seleted FieldId Hook:", selectedField);
-
   const fetchStandardData = async (fieldId) => {
     try {
       // Make the fetch call
@@ -136,11 +136,7 @@ const useDeviceData = () => {
 
   useEffect(() => {
     const fetchFieldInformationtaAsync = async () => {
-      try {
-        await fetchFieldInformation();
-      } catch (error) {
-        setError(error);
-      }
+      fetchFieldInformation();
     };
 
     fetchFieldInformationtaAsync();
