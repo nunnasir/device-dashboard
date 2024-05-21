@@ -12,9 +12,6 @@ export default function ProjectBoard() {
   const { selectedField, setSelectedField } = useContext(FieldIdContext);
   const { deviceStandardData, fieldInfo, deviceData } =
     useContext(DeviceDataContext);
-  const [seletedCropId, setSeletedseletedCropIdId] = useState("001");
-  const [seletedCropName, setSeletedseletedCropName] = useState("Rice");
-
   const [deviceStandardValue, setDeviceStandardValue] = useState({
     ph: "",
     mos: "",
@@ -29,9 +26,9 @@ export default function ProjectBoard() {
 
   const handleChange = (event) => {
     const selectedValue = event.target.value;
-    // setSelectedField(selectedValue);
+    setSelectedField(selectedValue);
 
-    if (selectedValue == "Rice" || selectedValue == "001") {
+    if (selectedValue == "Rice") {
       const updatedData = {
         ph: "7",
         mos: "1",
