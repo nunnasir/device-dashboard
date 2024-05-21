@@ -5,7 +5,9 @@ import { useDeviceData } from "../hooks";
 // DeviceDataProvider.js
 
 const DeviceDataProvider = ({ children }) => {
-  const [selectedField, setSelectedField] = useState(null);
+  const [selectedField, setSelectedField] = useState(
+    "23c325df-23d4-4f55-801c-cd4a1b4ffbc1"
+  );
   const { deviceStandardData, deviceData, fieldInfo, error, loading } =
     useDeviceData();
 
