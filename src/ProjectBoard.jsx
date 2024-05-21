@@ -58,7 +58,7 @@ export default function ProjectBoard() {
   const getPhMessage = (senValue, stValue) => {
     console.log("Parameter", senValue, Number(stValue));
 
-    if (senValue && stValue) {
+    if (senValue > 0 && Number(stValue) > 0) {
       if (senValue == Number(stValue)) {
         setPhNotificationMessage("PH within the standard range");
       }
