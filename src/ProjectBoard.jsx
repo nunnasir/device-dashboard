@@ -26,12 +26,13 @@ export default function ProjectBoard() {
           <label htmlFor="name" className="block text-gray-700">
             Field Id
           </label>
-          <input
-            type="text"
-            id="name"
-            placeholder="Enter field id"
-            className="w-full border rounded-md px-3 py-2"
-          />
+          <select id="name" className="w-full border rounded-md px-3 py-2">
+            {fieldInfo.map((field) => (
+              <option key={field.id} value={field.fieldId}>
+                {field.fieldId}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="w-full md:w-1/3 px-2 mb-4 md:mb-0">
           <label htmlFor="email" className="block text-gray-700">
