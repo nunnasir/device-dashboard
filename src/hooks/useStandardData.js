@@ -16,7 +16,7 @@ const useStandardData = () => {
 
   const { selectedField } = useContext(FieldIdContext);
 
-  console.log(selectedField);
+  console.log("Field Id", selectedField);
 
   const fetchDeviceStandardData = async (fieldId) => {
     try {
