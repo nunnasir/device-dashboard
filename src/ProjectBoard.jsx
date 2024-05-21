@@ -37,6 +37,16 @@ export default function ProjectBoard() {
         pot: "40",
       };
       setDeviceStandardValue(updatedData);
+    }
+    if (selectedValue == "Lentil") {
+      const updatedData = {
+        ph: "6.7",
+        mos: "50",
+        nit: "20",
+        phos: "40",
+        pot: "30",
+      };
+      setDeviceStandardValue(updatedData);
     } else {
       const updatedData = {
         ph: "",
