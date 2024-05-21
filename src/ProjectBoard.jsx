@@ -18,10 +18,10 @@ export default function ProjectBoard() {
   console.log(selectedField);
 
   const handleChange = (event) => {
-    // setSelectedField(event.target.value);
+    const selectedValue = event.target.value;
+    console.log(selectedValue);
 
-    console.log(selectedField);
-    console.log(event.target.value);
+    setSelectedField(selectedValue);
   };
 
   return (
