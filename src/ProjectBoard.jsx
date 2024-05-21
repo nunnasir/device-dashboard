@@ -37,8 +37,7 @@ export default function ProjectBoard() {
         pot: "40",
       };
       setDeviceStandardValue(updatedData);
-    }
-    if (selectedValue == "Lentil") {
+    } else if (selectedValue == "Lentil") {
       const updatedData = {
         ph: "6.7",
         mos: "50",
@@ -263,7 +262,7 @@ export default function ProjectBoard() {
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
                   St.Value: {deviceStandardValue.ph} <br />
-                  Sen.Value: {ph}
+                  Sen.Value: {selectedField == "Rice" ? ph : ""}
                 </p>
               </div>
               {/* Right Section (Image) */}
@@ -295,7 +294,7 @@ export default function ProjectBoard() {
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
                   St.Value: {deviceStandardValue.nit} <br />
-                  Sen.Value: {nit}
+                  Sen.Value: {selectedField == "Rice" ? nit : ""}
                 </p>
               </div>
               {/* Right Section (Image) */}
@@ -327,7 +326,7 @@ export default function ProjectBoard() {
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
                   St.Value: {deviceStandardValue.phos} <br />
-                  Sen.Value: {phos}
+                  Sen.Value: {selectedField == "Rice" ? phos : ""}
                 </p>
               </div>
               {/* Right Section (Image) */}
@@ -359,7 +358,7 @@ export default function ProjectBoard() {
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
                   St.Value: {deviceStandardValue.pot} <br />
-                  Sen.Value: {pot}
+                  Sen.Value: {selectedField == "Rice" ? pot : ""}
                 </p>
               </div>
               {/* Right Section (Image) */}
@@ -381,7 +380,9 @@ export default function ProjectBoard() {
             <div className="flex flex-col md:flex-row justify-center items-center">
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
-                <p className="text-gray-700">Sen.Value: {wfr}</p>
+                <p className="text-gray-700">
+                  Sen.Value: {selectedField == "Rice" ? wfr : ""}
+                </p>
               </div>
               {/* Right Section (Image) */}
               <div className="md:w-1/2 p-6">
@@ -412,7 +413,7 @@ export default function ProjectBoard() {
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
                   St.Value: {deviceStandardValue.mos} <br />
-                  Sen.Value: {mos}
+                  Sen.Value: {selectedField == "Rice" ? mos : ""}
                 </p>
               </div>
               {/* Right Section (Image) */}
@@ -438,7 +439,9 @@ export default function ProjectBoard() {
             <div className="flex flex-col md:flex-row justify-center items-center">
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
-                <p className="text-gray-700">Sen.Value: {wfr}</p>
+                <p className="text-gray-700">
+                  Sen.Value: {selectedField == "Rice" ? wfr : ""}
+                </p>
               </div>
               {/* Right Section (Image) */}
               <div className="md:w-1/2 p-6">
