@@ -10,17 +10,12 @@ import { DeviceDataContext, FieldIdContext } from "./context";
 
 export default function ProjectBoard() {
   const { deviceData, fieldInfo } = useContext(DeviceDataContext);
-
   const { deviceStandardData } = useContext(FieldIdContext);
-
   const { ph, mos, nit, phos, pot, wfr } = deviceData;
-
   const { selectedField, setSelectedField } = useContext(FieldIdContext);
 
   const handleChange = (event) => {
     setSelectedField(event.target.value);
-
-    console.log(event.target.value);
   };
 
   return (
