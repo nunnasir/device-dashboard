@@ -67,7 +67,7 @@ export default function ProjectBoard() {
   const [soilNotificationMessage, setSoilNotificationMessage] = useState("");
 
   const getPhMessage = (senValue, stValue) => {
-    if (senValue && Number(stValue) > 0) {
+    if (senValue >= 0 && Number(stValue) >= 0) {
       if (senValue === Number(stValue)) {
         setPhNotificationMessage("PH within the standard range");
       } else if (senValue > Number(stValue)) {
@@ -85,7 +85,7 @@ export default function ProjectBoard() {
   };
 
   const getNitrogenMessage = (senValue, stValue) => {
-    if (senValue && Number(stValue) > 0) {
+    if (senValue >= 0 && Number(stValue) >= 0) {
       if (senValue === Number(stValue)) {
         setNitrogenNotificationMessage("Nitrogen within the standard range");
       } else if (senValue > Number(stValue)) {
@@ -103,7 +103,7 @@ export default function ProjectBoard() {
   };
 
   const getPhosphorusMessage = (senValue, stValue) => {
-    if (senValue && Number(stValue) > 0) {
+    if (senValue >= 0 && Number(stValue) >= 0) {
       if (senValue === Number(stValue)) {
         setPhosphorusNotificationMessage(
           "Phosphorus within the standard range"
@@ -123,7 +123,7 @@ export default function ProjectBoard() {
   };
 
   const getPotasiumMessage = (senValue, stValue) => {
-    if (senValue && Number(stValue) > 0) {
+    if (senValue >= 0 && Number(stValue) >= 0) {
       if (senValue === Number(stValue)) {
         setPotasiumNotificationMessage("Potasium within the standard range");
       } else if (senValue > Number(stValue)) {
@@ -141,7 +141,7 @@ export default function ProjectBoard() {
   };
 
   const getSoilMessage = (senValue, stValue) => {
-    if (senValue && Number(stValue) > 0) {
+    if (senValue >= 0 && Number(stValue) >= 0) {
       if (senValue === Number(stValue)) {
         setSoilNotificationMessage("Soil Moisture within the standard range");
       } else if (senValue > Number(stValue)) {
