@@ -9,6 +9,10 @@ import { DeviceDataContext } from "./context";
 
 export default function ProjectBoard() {
   const { deviceData, deviceStandardData } = useContext(DeviceDataContext);
+
+  console.log(deviceData);
+  console.log(deviceStandardData);
+
   const { ph, mos, nit, phos, pot, wfr } = deviceData;
 
   return (

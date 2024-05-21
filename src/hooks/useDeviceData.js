@@ -54,7 +54,7 @@ const useDeviceData = () => {
 
       const data = await response.json();
 
-      console.log(data);
+      // console.log(data);
 
       const updateDeviceData = {
         ph: data.ph,
@@ -94,7 +94,7 @@ const useDeviceData = () => {
 
       const data = await response.json();
 
-      console.log(data);
+      // console.log(data);
       const updateDeviceStandardData = {
         ph: data.ph,
         mos: data.mos,
