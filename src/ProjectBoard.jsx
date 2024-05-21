@@ -6,15 +6,24 @@ import Phosphorus from "./assets/phosphorus.png";
 import potassium from "./assets/potassium.png";
 import soilAnalysis from "./assets/soil-analysis.png";
 import waterLevel from "./assets/water-level.png";
-import { DeviceDataContext } from "./context";
+import { DeviceDataContext, FieldIdContext } from "./context";
+
+import { useState } from "react";
 
 export default function ProjectBoard() {
   const { deviceData, deviceStandardData, fieldInfo } =
     useContext(DeviceDataContext);
 
-  console.log(fieldInfo);
+  const [selectedField, setSelectedField] = useState("");
 
   const { ph, mos, nit, phos, pot, wfr } = deviceData;
+
+  const { setSelectedFieldId } = useContext(FieldIdContext);
+
+  const handleChange = (event) => {
+    setSelectedField(event.target.value);
+    setSelectedFieldId(event.target.value);
+  };
 
   return (
     <main className="container mx-auto py-8 px-4">
@@ -26,7 +35,12 @@ export default function ProjectBoard() {
           <label htmlFor="fieldId" className="block text-gray-700">
             Field Id
           </label>
-          <select id="fieldId" className="w-full border rounded-md px-3 py-2">
+          <select
+            id="fieldId"
+            value={selectedField}
+            onChange={handleChange}
+            className="w-full border rounded-md px-3 py-2"
+          >
             {fieldInfo.map((field) => (
               <option key={field.id} value={field.fieldId}>
                 {field.fieldId}
@@ -38,7 +52,12 @@ export default function ProjectBoard() {
           <label htmlFor="crop" className="block text-gray-700">
             Crop Name
           </label>
-          <select id="crop" className="w-full border rounded-md px-3 py-2">
+          <select
+            id="crop"
+            value={selectedField}
+            onChange={handleChange}
+            className="w-full border rounded-md px-3 py-2"
+          >
             {fieldInfo.map((field) => (
               <option key={field.id} value={field.name}>
                 {field.name}

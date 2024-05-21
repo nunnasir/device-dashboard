@@ -16,13 +16,13 @@ const useDeviceData = () => {
   });
 
   const [deviceStandardData, setDeviceStandardData] = useState({
-    ph: 7.65,
-    mos: 0,
-    nit: 4,
-    phos: 0,
-    pot: 0,
-    water: 1,
-    wfr: 3419,
+    ph: "",
+    mos: "",
+    nit: "",
+    phos: "",
+    pot: "",
+    water: "",
+    wfr: "",
   });
 
   const [fieldInfo, setFieldInfo] = useState([]);
@@ -82,16 +82,27 @@ const useDeviceData = () => {
     }
   };
 
-  const fetchDeviceStandardData = async () => {
+  const fetchDeviceStandardData = async (fieldId) => {
     try {
       // Make the fetch call
       const response = await fetch(
-        `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/23c325df-23d4-4f55-801c-cd4a1b4ffbc1`
+        `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/${fieldId}`
       );
 
       if (!response.ok) {
-        const errorMessage = `Fetchibg standard data failed: ${response.status}`;
-        throw new Error(errorMessage);
+        const updatedData = {
+          ph: "",
+          mos: "",
+          nit: "",
+          phos: "",
+          pot: "",
+          water: "",
+          wfr: "",
+        };
+
+        setDeviceStandardData(updatedData);
+        // const errorMessage = `Fetchibg standard data failed: ${response.status}`;
+        // throw new Error(errorMessage);
       }
 
       const data = await response.json();
@@ -127,8 +138,6 @@ const useDeviceData = () => {
 
       const data = await response.json();
 
-      console.log(data.items);
-
       setFieldInfo(data.items);
     } catch (err) {
       setError(err);
@@ -148,7 +157,9 @@ const useDeviceData = () => {
   useEffect(() => {
     const fetchDeviceStandardDataAsync = async () => {
       try {
-        await fetchDeviceStandardData(selectedField);
+        if (selectedField) {
+          await fetchDeviceStandardData(selectedField);
+        }
       } catch (error) {
         setError(error);
       }
