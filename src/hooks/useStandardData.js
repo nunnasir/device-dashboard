@@ -68,7 +68,7 @@ const useStandardData = () => {
       }
     };
 
-    fetchDeviceStandardDataAsync();
+    fetchDeviceStandardDataAsync(selectedField);
   }, [selectedField]);
 
   return {
