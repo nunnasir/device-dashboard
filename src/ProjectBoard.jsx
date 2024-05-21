@@ -57,13 +57,13 @@ export default function ProjectBoard() {
     console.log(senValue, stValue);
 
     if (senValue && stValue) {
-      if (senValue == stValue) {
+      if (senValue == Number(stValue)) {
         return "PH within the standard range";
       }
-      if (senValue > stValue) {
+      if (senValue > Number(stValue)) {
         return "PH is above the standard range, Please consult with local agriculture office";
       }
-      if (senValue > stValue) {
+      if (senValue > Number(stValue)) {
         return "PH is below the standard range. Please consult with local agriculture office.";
       }
     } else {
