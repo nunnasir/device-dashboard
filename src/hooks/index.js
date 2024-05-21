@@ -1,3 +1,4 @@
 import useDeviceData from "./useDeviceData";
+import useStandardData from "./useStandardData";
 
-export { useDeviceData };
+export { useDeviceData, useStandardData };

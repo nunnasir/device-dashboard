@@ -1,19 +1,23 @@
 /* eslint-disable react/prop-types */
+import { FieldIdContext } from "../context";
+import { useStandardData } from "../hooks";
 
 import { useState } from "react";
 
 const FieldProvider = ({ children }) => {
   const { selectedField, setSelectedField } = useState("");
+  const { deviceStandardData } = useStandardData();
 
   return (
-    <FieldProvider.Provider
+    <FieldIdContext.Provider
       value={{
         selectedField,
         setSelectedField,
+        deviceStandardData,
       }}
     >
       {children}
-    </FieldProvider.Provider>
+    </FieldIdContext.Provider>
   );
 };
 
