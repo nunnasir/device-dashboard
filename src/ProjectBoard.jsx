@@ -59,11 +59,8 @@ export default function ProjectBoard() {
       {/* Item List */}
       <div className="flex flex-wrap -mx-4">
         {/* Item 1 */}
-
         <div className="w-full md:w-1/3 px-4 mb-4">
           <div className="bg-white rounded-lg shadow-md relative">
-            {" "}
-            {/* Added relative positioning */}
             {/* Card Top (Title) */}
             <div className="bg-blue-500 text-white py-3 px-6 flex justify-between items-center">
               <h3 className="text-lg font-bold">PH</h3>
@@ -71,9 +68,17 @@ export default function ProjectBoard() {
                 <FaInfoCircle className="text-white cursor-pointer" />
                 <div className="absolute right-0 w-64 bg-white text-gray-700 p-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <ul className="list-disc list-inside">
-                    <li>PH is a measure of acidity.</li>
-                    <li>Optimal range is 6.5 to 7.5.</li>
-                    <li>Monitor regularly.</li>
+                    <li>
+                      If sen. Value = std. Value, PH within the standard range
+                    </li>
+                    <li>
+                      If sen. Value `{">"}` std. Value, PH is above the standard
+                      range, Please consult with local agriculture office
+                    </li>
+                    <li>
+                      If sen. Value `{"<"}` std. Value, PH is below the standard
+                      range. Please consult with local agriculture office.
+                    </li>
                   </ul>
                 </div>
               </div>
