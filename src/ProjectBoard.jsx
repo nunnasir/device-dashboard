@@ -72,11 +72,11 @@ export default function ProjectBoard() {
                       If sen. Value = std. Value, PH within the standard range
                     </li>
                     <li>
-                      If sen. Value `{">"}` std. Value, PH is above the standard
+                      If sen. Value {">"} std. Value, PH is above the standard
                       range, Please consult with local agriculture office
                     </li>
                     <li>
-                      If sen. Value `{"<"}` std. Value, PH is below the standard
+                      If sen. Value {"<"} std. Value, PH is below the standard
                       range. Please consult with local agriculture office.
                     </li>
                   </ul>
@@ -102,10 +102,31 @@ export default function ProjectBoard() {
 
         {/* Item 2 */}
         <div className="w-full md:w-1/3 px-4 mb-4">
-          <div className="bg-white rounded-lg shadow-md">
+          <div className="bg-white rounded-lg shadow-md relative">
             {/* Card Top (Title) */}
-            <div className="bg-blue-500 text-white py-3 px-6">
-              <h3 className="text-lg font-bold text-center">Nitrogen (N)</h3>
+            <div className="bg-blue-500 text-white py-3 px-6 flex justify-between items-center">
+              <h3 className="text-lg font-bold">Nitrogen (N)</h3>
+              <div className="relative group">
+                <FaInfoCircle className="text-white cursor-pointer" />
+                <div className="absolute right-0 w-64 bg-white text-gray-700 p-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                  <ul className="list-disc list-inside">
+                    <li>
+                      If sen. Value = std. Value, Nitrogen within the standard
+                      range
+                    </li>
+                    <li>
+                      If sen. Value {">"} std. Value, Nitrogen is above the
+                      standard range, Please consult with local agriculture
+                      office
+                    </li>
+                    <li>
+                      If sen. Value {"<"} std. Value, Nitrogen is below the
+                      standard range. Please consult with local agriculture
+                      office.
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
             {/* Card Body */}
             <div className="flex flex-col md:flex-row justify-center items-center">
@@ -118,11 +139,13 @@ export default function ProjectBoard() {
               </div>
               {/* Right Section (Image) */}
               <div className="md:w-1/2 p-6">
-                <img src={fertilizer} alt="Image" className="w-32 h-auto" />
+                <img src={fertilizer} alt="PH Meter" className="w-32 h-auto" />
               </div>
             </div>
           </div>
         </div>
+
+        {/* Item 2 */}
 
         {/* Item 3 */}
         <div className="w-full md:w-1/3 px-4 mb-4">
