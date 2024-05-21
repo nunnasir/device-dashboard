@@ -59,39 +59,37 @@ export default function ProjectBoard() {
       {/* Item List */}
       <div className="flex flex-wrap -mx-4">
         {/* Item 1 */}
-        <div className="flex flex-wrap -mx-4">
-          {/* Item 1 */}
-          <div className="w-full md:w-1/3 px-4 mb-4">
-            <div className="bg-white rounded-lg shadow-md relative">
-              {" "}
-              {/* Added relative positioning */}
-              {/* Card Top (Title) */}
-              <div className="bg-blue-500 text-white py-3 px-6 flex justify-between items-center">
-                <h3 className="text-lg font-bold">PH</h3>
-                <div className="relative group">
-                  <FaInfoCircle className="text-white cursor-pointer" />
-                  <div className="absolute right-0 w-64 bg-white text-gray-700 p-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                    <ul className="list-disc list-inside">
-                      <li>PH is a measure of acidity.</li>
-                      <li>Optimal range is 6.5 to 7.5.</li>
-                      <li>Monitor regularly.</li>
-                    </ul>
-                  </div>
+
+        <div className="w-full md:w-1/3 px-4 mb-4">
+          <div className="bg-white rounded-lg shadow-md relative">
+            {" "}
+            {/* Added relative positioning */}
+            {/* Card Top (Title) */}
+            <div className="bg-blue-500 text-white py-3 px-6 flex justify-between items-center">
+              <h3 className="text-lg font-bold">PH</h3>
+              <div className="relative group">
+                <FaInfoCircle className="text-white cursor-pointer" />
+                <div className="absolute right-0 w-64 bg-white text-gray-700 p-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                  <ul className="list-disc list-inside">
+                    <li>PH is a measure of acidity.</li>
+                    <li>Optimal range is 6.5 to 7.5.</li>
+                    <li>Monitor regularly.</li>
+                  </ul>
                 </div>
               </div>
-              {/* Card Body */}
-              <div className="flex flex-col md:flex-row justify-center items-center">
-                {/* Left Section (Text) */}
-                <div className="md:w-1/2 p-6">
-                  <p className="text-gray-700">
-                    St.Value: {deviceStandardData.ph} <br />
-                    Sen.Value: {ph}
-                  </p>
-                </div>
-                {/* Right Section (Image) */}
-                <div className="md:w-1/2 p-6">
-                  <img src={phMeter} alt="PH Meter" className="w-32 h-auto" />
-                </div>
+            </div>
+            {/* Card Body */}
+            <div className="flex flex-col md:flex-row justify-center items-center">
+              {/* Left Section (Text) */}
+              <div className="md:w-1/2 p-6">
+                <p className="text-gray-700">
+                  St.Value: {deviceStandardData.ph} <br />
+                  Sen.Value: {ph}
+                </p>
+              </div>
+              {/* Right Section (Image) */}
+              <div className="md:w-1/2 p-6">
+                <img src={phMeter} alt="PH Meter" className="w-32 h-auto" />
               </div>
             </div>
           </div>
