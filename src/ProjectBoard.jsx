@@ -23,10 +23,10 @@ export default function ProjectBoard() {
       {/* Input Fields */}
       <div className="flex flex-wrap mb-4">
         <div className="w-full md:w-1/3 px-2 mb-4 md:mb-0">
-          <label htmlFor="name" className="block text-gray-700">
+          <label htmlFor="fieldId" className="block text-gray-700">
             Field Id
           </label>
-          <select id="name" className="w-full border rounded-md px-3 py-2">
+          <select id="fieldId" className="w-full border rounded-md px-3 py-2">
             {fieldInfo.map((field) => (
               <option key={field.id} value={field.fieldId}>
                 {field.fieldId}
@@ -35,15 +35,16 @@ export default function ProjectBoard() {
           </select>
         </div>
         <div className="w-full md:w-1/3 px-2 mb-4 md:mb-0">
-          <label htmlFor="email" className="block text-gray-700">
+          <label htmlFor="crop" className="block text-gray-700">
             Crop Name
           </label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter crop name"
-            className="w-full border rounded-md px-3 py-2"
-          />
+          <select id="crop" className="w-full border rounded-md px-3 py-2">
+            {fieldInfo.map((field) => (
+              <option key={field.id} value={field.name}>
+                {field.name}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="w-full md:w-1/3 px-2 mb-4 md:mb-0">
           <label htmlFor="time" className="block text-gray-700">
