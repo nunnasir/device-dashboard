@@ -129,7 +129,7 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value: {deviceStandardData.ph} <br />
+                  St.Value: {deviceStandardValue.ph} <br />
                   Sen.Value: {ph}
                 </p>
               </div>
@@ -174,7 +174,7 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value: {deviceStandardData.nit} <br />
+                  St.Value: {deviceStandardValue.nit} <br />
                   Sen.Value: {nit}
                 </p>
               </div>
@@ -219,7 +219,7 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value: {deviceStandardData.phos} <br />
+                  St.Value: {deviceStandardValue.phos} <br />
                   Sen.Value: {phos}
                 </p>
               </div>
@@ -264,7 +264,7 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value: {deviceStandardData.pot} <br />
+                  St.Value: {deviceStandardValue.pot} <br />
                   Sen.Value: {pot}
                 </p>
               </div>
@@ -327,7 +327,7 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  St.Value: {deviceStandardData.mos} <br />
+                  St.Value: {deviceStandardValue.mos} <br />
                   Sen.Value: {mos}
                 </p>
               </div>
