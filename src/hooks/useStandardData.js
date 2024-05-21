@@ -14,13 +14,21 @@ const useStandardData = () => {
 
   const { selectedField } = useContext(FieldIdContext);
 
-  const fetchDeviceStandardData = async (fieldId) => {
-    try {
-      const response = await fetch(
-        `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/${fieldId}`
-      );
+  useEffect(() => {
+    const fetchDeviceStandardData = async (fieldId) => {
+      try {
+        const response = await fetch(
+          `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/${fieldId}`
+        );
 
-      if (!response.ok) {
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
+        const data = await response.json();
+        setDeviceStandardData(data);
+      } catch (err) {
+        console.error(err);
         setDeviceStandardData({
           ph: "",
           mos: "",
@@ -30,25 +38,9 @@ const useStandardData = () => {
           water: "",
           wfr: "",
         });
-        return;
       }
+    };
 
-      const data = await response.json();
-      setDeviceStandardData({
-        ph: data.ph,
-        mos: data.mos,
-        nit: data.nit,
-        phos: data.phos,
-        pot: data.pot,
-        water: data.water,
-        wfr: data.wfr,
-      });
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
-  useEffect(() => {
     if (selectedField) {
       fetchDeviceStandardData(selectedField);
     }
