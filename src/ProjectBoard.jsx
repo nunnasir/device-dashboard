@@ -15,7 +15,7 @@ export default function ProjectBoard() {
   const { selectedField, setSelectedField } = useContext(FieldIdContext);
 
   const handleChange = (event) => {
-    console.log(event);
+    console.log(event.target.value);
 
     setSelectedField(event.target.value);
   };
