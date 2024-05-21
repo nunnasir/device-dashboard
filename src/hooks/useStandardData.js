@@ -16,6 +16,8 @@ const useStandardData = () => {
 
   useEffect(() => {
     const fetchDeviceStandardData = async (fieldId) => {
+      console.log(fieldId);
+
       try {
         const response = await fetch(
           `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/${fieldId}`
