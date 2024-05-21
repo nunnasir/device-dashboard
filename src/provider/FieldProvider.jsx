@@ -5,7 +5,7 @@ import { useStandardData } from "../hooks";
 import { useState } from "react";
 
 const FieldProvider = ({ children }) => {
-  const { selectedField, setSelectedField } = useState("");
+  const [selectedField, setSelectedField] = useState("");
   const { deviceStandardData } = useStandardData();
 
   return (
