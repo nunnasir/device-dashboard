@@ -34,7 +34,7 @@ const useDeviceData = () => {
 
   const [error, setError] = useState(null);
 
-  const { selectedField } = useContext(FieldIdContext);
+  const { selectedField, setSelectedField } = useContext(FieldIdContext);
 
   const fetchDeviceData = async () => {
     try {
@@ -183,6 +183,8 @@ const useDeviceData = () => {
   }, []);
 
   return {
+    selectedField,
+    setSelectedField,
     deviceData,
     fieldInfo,
     deviceStandardData,

@@ -6,23 +6,21 @@ import Phosphorus from "./assets/phosphorus.png";
 import potassium from "./assets/potassium.png";
 import soilAnalysis from "./assets/soil-analysis.png";
 import waterLevel from "./assets/water-level.png";
-import { DeviceDataContext, FieldIdContext } from "./context";
-
-import { useState } from "react";
+import { DeviceDataContext } from "./context";
 
 export default function ProjectBoard() {
-  const { deviceData, deviceStandardData, fieldInfo } =
-    useContext(DeviceDataContext);
-
-  const [selectedField, setSelectedField] = useState("");
+  const {
+    deviceData,
+    deviceStandardData,
+    fieldInfo,
+    selectedField,
+    setSelectedField,
+  } = useContext(DeviceDataContext);
 
   const { ph, mos, nit, phos, pot, wfr } = deviceData;
 
-  const { setSelectedFieldId } = useContext(FieldIdContext);
-
   const handleChange = (event) => {
     setSelectedField(event.target.value);
-    setSelectedFieldId(event.target.value);
   };
 
   return (
