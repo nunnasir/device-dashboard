@@ -42,6 +42,17 @@ export default function ProjectBoard() {
         wfr: "11",
       };
       setDeviceStandardValue(updatedData);
+    } else {
+      const updatedData = {
+        ph: "",
+        mos: "",
+        nit: "",
+        phos: "",
+        pot: "",
+        water: "",
+        wfr: "",
+      };
+      setDeviceStandardValue(updatedData);
     }
   };
 
