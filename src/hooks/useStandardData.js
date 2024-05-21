@@ -36,6 +36,8 @@ const useStandardData = () => {
           wfr: "",
         };
         setDeviceStandardData(updatedData);
+
+        return;
       }
 
       const data = await response.json();
@@ -58,17 +60,9 @@ const useStandardData = () => {
   };
 
   useEffect(() => {
-    const fetchDeviceStandardDataAsync = async (selectedField) => {
-      try {
-        if (selectedField) {
-          await fetchDeviceStandardData(selectedField);
-        }
-      } catch (error) {
-        throw error.message;
-      }
-    };
-
-    fetchDeviceStandardDataAsync(selectedField);
+    if (selectedField) {
+      fetchDeviceStandardData(selectedField);
+    }
   }, [selectedField]);
 
   return {
