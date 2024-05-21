@@ -53,6 +53,22 @@ export default function ProjectBoard() {
     }
   };
 
+  const getPhMessage = (senValue, stValue) => {
+    if (senValue && stValue) {
+      if (senValue == stValue) {
+        return "PH within the standard range";
+      }
+      if (senValue > stValue) {
+        return "PH is above the standard range, Please consult with local agriculture office";
+      }
+      if (senValue > stValue) {
+        return "PH is below the standard range. Please consult with local agriculture office.";
+      }
+    } else {
+      return "There is no any standard value";
+    }
+  };
+
   return (
     <main className="container mx-auto py-8 px-4">
       <h2 className="text-2xl font-bold mb-4">Welcome to Dashboard</h2>
@@ -117,17 +133,7 @@ export default function ProjectBoard() {
                 <FaInfoCircle className="text-white cursor-pointer" />
                 <div className="absolute right-0 w-64 bg-white text-gray-700 p-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <ul className="list-disc list-inside">
-                    <li>
-                      If sen. Value = std. Value, PH within the standard range
-                    </li>
-                    <li>
-                      If sen. Value {">"} std. Value, PH is above the standard
-                      range, Please consult with local agriculture office
-                    </li>
-                    <li>
-                      If sen. Value {"<"} std. Value, PH is below the standard
-                      range. Please consult with local agriculture office.
-                    </li>
+                    <li>{getPhMessage(ph, deviceStandardValue.ph)}</li>
                   </ul>
                 </div>
               </div>
