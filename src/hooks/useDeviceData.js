@@ -29,13 +29,7 @@ const useDeviceData = () => {
   });
 
   const fieldIdContext = useContext(FieldIdContext);
-
-  console.log(FieldIdContext);
-
   const { selectedField } = fieldIdContext || {}; // Handle if context is null
-
-  console.log(selectedField);
-
   const [error, setError] = useState(null);
 
   const fetchDeviceData = async () => {

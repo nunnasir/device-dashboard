@@ -54,10 +54,15 @@ export default function ProjectBoard() {
   };
 
   const [phNotificationMessage, setPhNotificationMessage] = useState("");
+  const [nitrogenNotificationMessage, setNitrogenNotificationMessage] =
+    useState("");
+  const [phosphorusNotificationMessage, setPhosphorusNotificationMessage] =
+    useState("");
+  const [potasiumNotificationMessage, setPotasiumNotificationMessage] =
+    useState("");
+  const [soilNotificationMessage, setSoilNotificationMessage] = useState("");
 
   const getPhMessage = (senValue, stValue) => {
-    console.log("Parameter", senValue, Number(stValue));
-
     if (senValue > 0 && Number(stValue) > 0) {
       if (senValue === Number(stValue)) {
         setPhNotificationMessage("PH within the standard range");
@@ -75,9 +80,99 @@ export default function ProjectBoard() {
     }
   };
 
+  const getNitrogenMessage = (senValue, stValue) => {
+    if (senValue > 0 && Number(stValue) > 0) {
+      if (senValue === Number(stValue)) {
+        setNitrogenNotificationMessage("Nitrogen within the standard range");
+      } else if (senValue > Number(stValue)) {
+        setNitrogenNotificationMessage(
+          "Nitrogen is above the standard range, Please consult with local agriculture office"
+        );
+      } else if (senValue < Number(stValue)) {
+        setNitrogenNotificationMessage(
+          "Nitrogen is below the standard range. Please consult with local agriculture office."
+        );
+      }
+    } else {
+      setNitrogenNotificationMessage("There is no any standard value");
+    }
+  };
+
+  const getPhosphorusMessage = (senValue, stValue) => {
+    if (senValue > 0 && Number(stValue) > 0) {
+      if (senValue === Number(stValue)) {
+        setPhosphorusNotificationMessage(
+          "Phosphorus within the standard range"
+        );
+      } else if (senValue > Number(stValue)) {
+        setNitrogenNotificationMessage(
+          "Phosphorus is above the standard range, Please consult with local agriculture office"
+        );
+      } else if (senValue < Number(stValue)) {
+        setPhosphorusNotificationMessage(
+          "Phosphorus is below the standard range. Please consult with local agriculture office."
+        );
+      }
+    } else {
+      setPhosphorusNotificationMessage("There is no any standard value");
+    }
+  };
+
+  const getPotasiumMessage = (senValue, stValue) => {
+    if (senValue > 0 && Number(stValue) > 0) {
+      if (senValue === Number(stValue)) {
+        setPotasiumNotificationMessage("Potasium within the standard range");
+      } else if (senValue > Number(stValue)) {
+        setPotasiumNotificationMessage(
+          "Potasium is above the standard range, Please consult with local agriculture office"
+        );
+      } else if (senValue < Number(stValue)) {
+        setPotasiumNotificationMessage(
+          "Potasium is below the standard range. Please consult with local agriculture office."
+        );
+      }
+    } else {
+      setPotasiumNotificationMessage("There is no any standard value");
+    }
+  };
+
+  const getSoilMessage = (senValue, stValue) => {
+    if (senValue > 0 && Number(stValue) > 0) {
+      if (senValue === Number(stValue)) {
+        setSoilNotificationMessage("Soil Moisture within the standard range");
+      } else if (senValue > Number(stValue)) {
+        setSoilNotificationMessage(
+          "Soil Moisture is above the standard range, Please consult with local agriculture office"
+        );
+      } else if (senValue < Number(stValue)) {
+        setSoilNotificationMessage(
+          "Soil Moisture is below the standard range. Please consult with local agriculture office."
+        );
+      }
+    } else {
+      setSoilNotificationMessage("There is no any standard value");
+    }
+  };
+
   useEffect(() => {
     getPhMessage(ph, deviceStandardValue.ph);
   }, [ph, deviceStandardValue.ph]);
+
+  useEffect(() => {
+    getNitrogenMessage(nit, deviceStandardValue.nit);
+  }, [nit, deviceStandardValue.nit]);
+
+  useEffect(() => {
+    getPhosphorusMessage(phos, deviceStandardValue.phos);
+  }, [phos, deviceStandardValue.phos]);
+
+  useEffect(() => {
+    getPotasiumMessage(pot, deviceStandardValue.pot);
+  }, [pot, deviceStandardValue.pot]);
+
+  useEffect(() => {
+    getSoilMessage(mos, deviceStandardValue.mos);
+  }, [mos, deviceStandardValue.mos]);
 
   return (
     <main className="container mx-auto py-8 px-4">
@@ -175,20 +270,7 @@ export default function ProjectBoard() {
                 <FaInfoCircle className="text-white cursor-pointer" />
                 <div className="absolute right-0 w-64 bg-white text-gray-700 p-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <ul className="list-disc list-inside">
-                    <li>
-                      If sen. Value = std. Value, Nitrogen within the standard
-                      range
-                    </li>
-                    <li>
-                      If sen. Value {">"} std. Value, Nitrogen is above the
-                      standard range, Please consult with local agriculture
-                      office
-                    </li>
-                    <li>
-                      If sen. Value {"<"} std. Value, Nitrogen is below the
-                      standard range. Please consult with local agriculture
-                      office.
-                    </li>
+                    {nitrogenNotificationMessage}
                   </ul>
                 </div>
               </div>
@@ -220,20 +302,7 @@ export default function ProjectBoard() {
                 <FaInfoCircle className="text-white cursor-pointer" />
                 <div className="absolute right-0 w-64 bg-white text-gray-700 p-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <ul className="list-disc list-inside">
-                    <li>
-                      If sen. Value = std. Value, Phosphorus within the standard
-                      range
-                    </li>
-                    <li>
-                      If sen. Value {">"} std. Value, Phosphorus is above the
-                      standard range, Please consult with local agriculture
-                      office
-                    </li>
-                    <li>
-                      If sen. Value {"<"} std. Value, Phosphorus is below the
-                      standard range. Please consult with local agriculture
-                      office.
-                    </li>
+                    {phosphorusNotificationMessage}
                   </ul>
                 </div>
               </div>
@@ -265,20 +334,7 @@ export default function ProjectBoard() {
                 <FaInfoCircle className="text-white cursor-pointer" />
                 <div className="absolute right-0 w-64 bg-white text-gray-700 p-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <ul className="list-disc list-inside">
-                    <li>
-                      If sen. Value = std. Value, Potassium within the standard
-                      range
-                    </li>
-                    <li>
-                      If sen. Value {">"} std. Value, Potassium is above the
-                      standard range, Please consult with local agriculture
-                      office
-                    </li>
-                    <li>
-                      If sen. Value {"<"} std. Value, Potassium is below the
-                      standard range. Please consult with local agriculture
-                      office.
-                    </li>
+                    {potasiumNotificationMessage}
                   </ul>
                 </div>
               </div>
@@ -334,14 +390,7 @@ export default function ProjectBoard() {
                 <FaInfoCircle className="text-white cursor-pointer" />
                 <div className="absolute right-0 w-64 bg-white text-gray-700 p-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <ul className="list-disc list-inside">
-                    <li>
-                      If sen. Value = std. Value, Soil Moisture within the
-                      standard range
-                    </li>
-                    <li>
-                      If sen. Value {"<"} std. Value, Soil Moisture is below the
-                      standard range
-                    </li>
+                    {soilNotificationMessage}
                   </ul>
                 </div>
               </div>
