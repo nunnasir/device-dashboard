@@ -16,7 +16,7 @@ const useStandardData = () => {
 
   useEffect(() => {
     const fetchDeviceStandardData = async (fieldId) => {
-      console.log(fieldId);
+      console.log("Field Id:", fieldId);
 
       try {
         const response = await fetch(
