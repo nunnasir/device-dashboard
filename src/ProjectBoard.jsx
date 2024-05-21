@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import fertilizer from "./assets/fertilizer.png";
 import phMeter from "./assets/ph-meter.png";
@@ -12,30 +12,38 @@ export default function ProjectBoard() {
   const { selectedField, setSelectedField } = useContext(FieldIdContext);
   const { deviceStandardData, fieldInfo, deviceData } =
     useContext(DeviceDataContext);
+  const [seletedCropId, setSeletedseletedCropIdId] = useState("001");
+  const [seletedCropName, setSeletedseletedCropName] = useState("Rice");
 
-  // const {
-  //   deviceData,
-  //   fieldInfo,
-  //   selectedField,
-  //   setSelectedField,
-  //   deviceStandardData,
-  // } = useContext(DeviceDataContext);
+  const [deviceStandardValue, setDeviceStandardValue] = useState({
+    ph: "",
+    mos: "",
+    nit: "",
+    phos: "",
+    pot: "",
+    water: "",
+    wfr: "",
+  });
 
   const { ph, mos, nit, phos, pot, wfr } = deviceData;
-  // const { selectedField, setSelectedField, deviceStandardData } =
-  //   useContext(FieldIdContext);
-
-  console.log(deviceStandardData);
-  console.log(selectedField);
 
   const handleChange = (event) => {
     const selectedValue = event.target.value;
-    console.log("Selected value:", selectedValue);
     setSelectedField(selectedValue);
-  };
 
-  console.log("Current selected field:", selectedField); // Check the current value of selectedField
-  console.log("Device standard data:", deviceStandardData);
+    if (selectedValue == "Rice") {
+      const updatedData = {
+        ph: "7",
+        mos: "1",
+        nit: "4",
+        phos: "3",
+        pot: "11",
+        water: "333",
+        wfr: "11",
+      };
+      setDeviceStandardValue(updatedData);
+    }
+  };
 
   return (
     <main className="container mx-auto py-8 px-4">
@@ -66,12 +74,12 @@ export default function ProjectBoard() {
           </label>
           <select
             id="dropdown"
-            value={selectedField || ""}
+            value={selectedField}
             onChange={handleChange}
             className="w-full border rounded-md px-3 py-2"
           >
             {fieldInfo.map((field) => (
-              <option key={field.id} value={field.id}>
+              <option key={field.id} value={field.name}>
                 {field.name}
               </option>
             ))}

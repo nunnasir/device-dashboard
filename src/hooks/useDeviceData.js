@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // useDeviceData.js
 import { useContext, useEffect, useState } from "react";
 import { FieldIdContext } from "../context";
@@ -82,12 +83,11 @@ const useDeviceData = () => {
   };
 
   const fetchStandardData = async (fieldId) => {
-    // if (!fieldId) return;
+    if (!fieldId) return;
 
     try {
       const response = await fetch(
-        // `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/${fieldId}`
-        `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/23c325df-23d4-4f55-801c-cd4a1b4ffbc1`
+        `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/${fieldId}`
       );
 
       if (!response.ok) {
