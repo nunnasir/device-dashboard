@@ -4,7 +4,7 @@ import { DeviceDataContext, FieldIdContext } from "../context";
 import { useDeviceData } from "../hooks";
 
 const DeviceDataProvider = ({ children }) => {
-  const [selectedField, setSelectedField] = useState(null);
+  const [selectedField, setSelectedField] = useState("");
   const { deviceStandardData, deviceData, fieldInfo, error, loading } =
     useDeviceData();
 
