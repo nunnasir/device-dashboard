@@ -54,6 +54,8 @@ export default function ProjectBoard() {
   };
 
   const getPhMessage = (senValue, stValue) => {
+    console.log(senValue, stValue);
+
     if (senValue && stValue) {
       if (senValue == stValue) {
         return "PH within the standard range";
