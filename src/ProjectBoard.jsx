@@ -219,12 +219,12 @@ export default function ProjectBoard() {
           </select>
         </div>
         <div className="w-full md:w-1/3 px-2 mb-4 md:mb-0">
-          <label htmlFor="time" className="block text-gray-700">
-            Time
+          <label htmlFor="datetime" className="block text-gray-700">
+            Date & Time
           </label>
           <input
-            type="time"
-            id="time"
+            type="datetime-local"
+            id="datetime"
             className="w-full border rounded-md px-3 py-2"
           />
         </div>
@@ -443,14 +443,14 @@ export default function ProjectBoard() {
           <div className="bg-white rounded-lg shadow-md">
             {/* Card Top (Title) */}
             <div className="bg-blue-500 text-white py-3 px-6">
-              <h3 className="text-lg font-bold text-center">Action</h3>
+              <h3 className="text-lg font-bold text-center">Irrigation</h3>
             </div>
             {/* Card Body */}
             <div className="flex flex-col md:flex-row justify-center items-center">
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <div className="flex items-center mt-4">
-                  <span className="mr-2 text-gray-700">Meter Off</span>
+                  <span className="mr-2 text-gray-700">Pump Off</span>
                   <Switch
                     onChange={handleToggle}
                     checked={isMeterOn}
@@ -459,7 +459,7 @@ export default function ProjectBoard() {
                     uncheckedIcon={false}
                     checkedIcon={false}
                   />
-                  <span className="ml-2 text-gray-700">Meter On</span>
+                  <span className="ml-2 text-gray-700">Pump On</span>
                 </div>
               </div>
               {/* Right Section (Image) */}
