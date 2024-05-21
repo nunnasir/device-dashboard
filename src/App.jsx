@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Login from "./Login";
 import ProjectBoard from "./ProjectBoard";
-import { DeviceDataProvider } from "./provider";
+import { DeviceDataProvider, FieldProvider } from "./provider";
 
 export default function App() {
   const [authenticUser, setAuthenticUser] = useState(false);
@@ -24,17 +24,19 @@ export default function App() {
 
   return (
     <DeviceDataProvider>
-      {authenticUser ? (
-        <>
-          <Header onLogOut={handleLogOut} />
-          <ProjectBoard />
-          <Footer />
-        </>
-      ) : (
-        <Login onAuthenticUser={handleAuthenticUser} />
-      )}
+      <FieldProvider>
+        {authenticUser ? (
+          <>
+            <Header onLogOut={handleLogOut} />
+            <ProjectBoard />
+            <Footer />
+          </>
+        ) : (
+          <Login onAuthenticUser={handleAuthenticUser} />
+        )}
 
-      <ToastContainer position="top-right" autoClose={3000} theme="light" />
+        <ToastContainer position="top-right" autoClose={3000} theme="light" />
+      </FieldProvider>
     </DeviceDataProvider>
   );
 }

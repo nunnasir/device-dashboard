@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useContext, useEffect, useState } from "react";
-import { FieldIdContext } from "../context";
+import { useEffect, useState } from "react";
 
 const useDeviceData = () => {
   const [deviceData, setDeviceData] = useState({
@@ -15,16 +14,6 @@ const useDeviceData = () => {
     sensor: 1,
   });
 
-  const [deviceStandardData, setDeviceStandardData] = useState({
-    ph: "",
-    mos: "",
-    nit: "",
-    phos: "",
-    pot: "",
-    water: "",
-    wfr: "",
-  });
-
   const [fieldInfo, setFieldInfo] = useState([]);
 
   const [loading, setLoading] = useState({
@@ -33,8 +22,6 @@ const useDeviceData = () => {
   });
 
   const [error, setError] = useState(null);
-
-  const { selectedField, setSelectedField } = useContext(FieldIdContext);
 
   const fetchDeviceData = async () => {
     try {
@@ -82,50 +69,6 @@ const useDeviceData = () => {
     }
   };
 
-  const fetchDeviceStandardData = async (fieldId) => {
-    console.log(fieldId);
-
-    try {
-      // Make the fetch call
-      const response = await fetch(
-        `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/${fieldId}`
-      );
-
-      if (!response.ok) {
-        const updatedData = {
-          ph: "",
-          mos: "",
-          nit: "",
-          phos: "",
-          pot: "",
-          water: "",
-          wfr: "",
-        };
-
-        setDeviceStandardData(updatedData);
-        // const errorMessage = `Fetchibg standard data failed: ${response.status}`;
-        // throw new Error(errorMessage);
-      }
-
-      const data = await response.json();
-
-      // console.log(data);
-      const updateDeviceStandardData = {
-        ph: data.ph,
-        mos: data.mos,
-        nit: data.nit,
-        phos: data.phos,
-        pot: data.pot,
-        water: data.water,
-        wfr: data.wfr,
-      };
-
-      setDeviceStandardData(updateDeviceStandardData);
-    } catch (err) {
-      setError(err);
-    }
-  };
-
   const fetchFieldInformation = async () => {
     try {
       // Make the fetch call
@@ -157,20 +100,6 @@ const useDeviceData = () => {
   }, []);
 
   useEffect(() => {
-    const fetchDeviceStandardDataAsync = async () => {
-      try {
-        if (selectedField) {
-          await fetchDeviceStandardData(selectedField);
-        }
-      } catch (error) {
-        setError(error);
-      }
-    };
-
-    fetchDeviceStandardDataAsync();
-  }, [selectedField]);
-
-  useEffect(() => {
     const fetchFieldInformationtaAsync = async () => {
       try {
         await fetchFieldInformation();
@@ -183,11 +112,8 @@ const useDeviceData = () => {
   }, []);
 
   return {
-    selectedField,
-    setSelectedField,
     deviceData,
     fieldInfo,
-    deviceStandardData,
     error,
     loading,
   };
