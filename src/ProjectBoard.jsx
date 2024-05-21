@@ -14,6 +14,8 @@ export default function ProjectBoard() {
   const { ph, mos, nit, phos, pot, wfr } = deviceData;
   const { selectedField, setSelectedField } = useContext(FieldIdContext);
 
+  console.log(deviceStandardData);
+
   const handleChange = (event) => {
     setSelectedField(event.target.value);
   };
