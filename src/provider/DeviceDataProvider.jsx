@@ -5,11 +5,19 @@ import { DeviceDataContext } from "../context";
 import { useDeviceData } from "../hooks";
 
 const DeviceDataProvider = ({ children }) => {
-  const { deviceData, deviceStandardData, error, loading } = useDeviceData();
+  const { deviceData, deviceStandardData, fieldId, cropName, error, loading } =
+    useDeviceData();
 
   return (
     <DeviceDataContext.Provider
-      value={{ deviceData, deviceStandardData, error, loading }}
+      value={{
+        deviceData,
+        deviceStandardData,
+        fieldId,
+        cropName,
+        error,
+        loading,
+      }}
     >
       {children}
     </DeviceDataContext.Provider>

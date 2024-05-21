@@ -9,10 +9,11 @@ import waterLevel from "./assets/water-level.png";
 import { DeviceDataContext } from "./context";
 
 export default function ProjectBoard() {
-  const { deviceData, deviceStandardData } = useContext(DeviceDataContext);
+  const { deviceData, deviceStandardData, fieldId, cropName } =
+    useContext(DeviceDataContext);
 
-  console.log(deviceData);
-  console.log(deviceStandardData);
+  console.log(fieldId);
+  console.log(cropName);
 
   const { ph, mos, nit, phos, pot, wfr } = deviceData;
 
