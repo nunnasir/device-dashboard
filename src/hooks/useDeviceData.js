@@ -102,6 +102,26 @@ const useDeviceData = () => {
     }
   };
 
+  const fetchStandardData = async (fieldId) => {
+    try {
+      // Make the fetch call
+      const response = await fetch(
+        `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/${fieldId}`
+      );
+
+      if (!response.ok) {
+        const errorMessage = `Fetchibg standard data failed: ${response.status}`;
+        throw new Error(errorMessage);
+      }
+
+      const data = await response.json();
+
+      setDeviceStandardData(data);
+    } catch (err) {
+      setError(err);
+    }
+  };
+
   useEffect(() => {
     setLoading({
       ...loading,
@@ -125,35 +145,7 @@ const useDeviceData = () => {
   }, []);
 
   useEffect(() => {
-    const fetchDeviceStandardData = async (fieldId) => {
-      try {
-        const response = await fetch(
-          `https://smartsolarirrigationsystem.azurewebsites.net/api/standardDataByFieldId/${fieldId}`
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-
-        const data = await response.json();
-        setDeviceStandardData(data);
-      } catch (err) {
-        console.error(err);
-        setDeviceStandardData({
-          ph: "",
-          mos: "",
-          nit: "",
-          phos: "",
-          pot: "",
-          water: "",
-          wfr: "",
-        });
-      }
-    };
-
-    if (selectedField) {
-      fetchDeviceStandardData(selectedField);
-    }
+    fetchStandardData(selectedField);
   }, [selectedField]);
 
   return {
