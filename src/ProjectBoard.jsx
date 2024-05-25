@@ -22,7 +22,7 @@ export default function ProjectBoard() {
     pot: "",
   });
 
-  const { ph, mos, nit, phos, pot, wfr } = deviceData;
+  const { ph, mos, nit, phos, pot, wfr, water } = deviceData;
 
   const handleChange = (event) => {
     const selectedValue = event.target.value;
@@ -99,11 +99,11 @@ export default function ProjectBoard() {
         setNitrogenNotificationMessage("Nitrogen within the standard range");
       } else if (senValue > Number(stValue)) {
         setNitrogenNotificationMessage(
-          "Nitrogen is above the standard range, Please consult with local agriculture office"
+          "Nitrogen is above the standard range. No Need to give Urea Fertilizer"
         );
       } else if (senValue < Number(stValue)) {
         setNitrogenNotificationMessage(
-          "Nitrogen is below the standard range. Please consult with local agriculture office."
+          "Nitrogen is below the standard range. Please provide Urea Fertilizer"
         );
       }
     } else {
@@ -118,12 +118,12 @@ export default function ProjectBoard() {
           "Phosphorus within the standard range"
         );
       } else if (senValue > Number(stValue)) {
-        setNitrogenNotificationMessage(
-          "Phosphorus is above the standard range, Please consult with local agriculture office"
+        setPhosphorusNotificationMessage(
+          "Phosphorus is above the standard range. No Need to give Phosphate Fertilizer"
         );
       } else if (senValue < Number(stValue)) {
         setPhosphorusNotificationMessage(
-          "Phosphorus is below the standard range. Please consult with local agriculture office."
+          "Phosphorus is below the standard range. Please provide Phosphate Fertilizer"
         );
       }
     } else {
@@ -137,11 +137,11 @@ export default function ProjectBoard() {
         setPotasiumNotificationMessage("Potasium within the standard range");
       } else if (senValue > Number(stValue)) {
         setPotasiumNotificationMessage(
-          "Potasium is above the standard range, Please consult with local agriculture office"
+          "Potasium is above the standard range. No Need to give Potash Fertilizer"
         );
       } else if (senValue < Number(stValue)) {
         setPotasiumNotificationMessage(
-          "Potasium is below the standard range. Please consult with local agriculture office."
+          "Potasium is below the standard range. Please provide Potash Fertilizer."
         );
       }
     } else {
@@ -381,7 +381,7 @@ export default function ProjectBoard() {
               {/* Left Section (Text) */}
               <div className="md:w-1/2 p-6">
                 <p className="text-gray-700">
-                  Sen.Value: {selectedField == "Rice" ? wfr : ""}
+                  Sen.Value: {selectedField == "Rice" ? water : ""}
                 </p>
               </div>
               {/* Right Section (Image) */}
@@ -434,7 +434,7 @@ export default function ProjectBoard() {
             {/* Card Top (Title) */}
             <div className="bg-blue-500 text-white py-3 px-6">
               <h3 className="text-lg font-bold text-center">
-                Water Quantity (Liter)
+                Water Quantity (ml)
               </h3>
             </div>
             {/* Card Body */}
