@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import Switch from "react-switch";
+import { toast } from "react-toastify";
 import switchImage from "./assets/Switch.jpg";
 import waterImage from "./assets/WaterLevel.jpg";
 import fertilizer from "./assets/fertilizer.png";
@@ -65,6 +66,8 @@ export default function ProjectBoard() {
   const handleToggle = () => {
     if (water === 0) {
       setIsMeterOn(!isMeterOn);
+    } else if (water === 1) {
+      toast.error(`Water Level Already High`);
     }
   };
 
