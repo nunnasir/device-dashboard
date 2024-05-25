@@ -155,11 +155,11 @@ export default function ProjectBoard() {
         setSoilNotificationMessage("Soil Moisture within the standard range");
       } else if (senValue > Number(stValue)) {
         setSoilNotificationMessage(
-          "Soil Moisture is above the standard range, Please consult with local agriculture office"
+          "Soil Moisture is above the standard range. No Need Irrigation"
         );
       } else if (senValue < Number(stValue)) {
         setSoilNotificationMessage(
-          "Soil Moisture is below the standard range. Please consult with local agriculture office."
+          "Soil Moisture is below the standard range. Need Irrigation."
         );
       }
     } else {
