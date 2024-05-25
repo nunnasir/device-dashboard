@@ -5,13 +5,13 @@ import { FieldIdContext } from "../context";
 
 const useDeviceData = () => {
   const [deviceData, setDeviceData] = useState({
-    ph: 7.65,
+    ph: 0,
     mos: 0,
-    nit: 4,
+    nit: 0,
     phos: 0,
     pot: 0,
-    water: 1,
-    wfr: 3419,
+    water: 0,
+    wfr: 0,
     node: 1,
     sensor: 1,
   });
