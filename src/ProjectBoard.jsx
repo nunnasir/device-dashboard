@@ -63,7 +63,9 @@ export default function ProjectBoard() {
   const [isMeterOn, setIsMeterOn] = useState(false);
 
   const handleToggle = () => {
-    setIsMeterOn(!isMeterOn);
+    if (water === 0) {
+      setIsMeterOn(!isMeterOn);
+    }
   };
 
   const [phNotificationMessage, setPhNotificationMessage] = useState("");
@@ -186,6 +188,14 @@ export default function ProjectBoard() {
   useEffect(() => {
     getSoilMessage(mos, deviceStandardValue.mos);
   }, [mos, deviceStandardValue.mos]);
+
+  useEffect(() => {
+    if (water === 1) {
+      setIsMeterOn(0);
+    } else if (water === 0) {
+      setIsMeterOn(1);
+    }
+  }, [water]);
 
   return (
     <main className="container mx-auto py-8 px-4">
